@@ -14,7 +14,7 @@
 (setq display-line-numbers-type 'relative)
 
 ;; Set default folder
-(setq default-directory (getenv "PWD"))
+;; (setq default-directory (getenv "PWD"))
 
 ;; Disable backup
 (setq backup-inhibited t)
@@ -24,10 +24,10 @@
 
 ;; Font setup
 (defvar hack-font "Hack Nerd Font:pixelsize=15:foundry=SRC:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
-(add-to-list 'default-frame-alist '(font . "Hack Nerd Font:pixelsize=15:foundry=SRC:weight=normal:slant=normal:width=normal:spacing=100:scalable=true"))
-(set-face-attribute 'default t :font "Hack Nerd Font:pixelsize=15:foundry=SRC:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
+(add-to-list 'default-frame-alist `(font . ,hack-font))
+(set-face-attribute 'default t :font hack-font)
 
-(set-face-attribute 'default nil :font "Hack Nerd Font:pixelsize=15:foundry=SRC:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
+(set-face-attribute 'default nil :font hack-font)
 (set-frame-font hack-font nil t)
 
 ;; Open links in Firefox
