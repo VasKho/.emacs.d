@@ -17,6 +17,8 @@ This config provides:
 
 ** Screenshots
 
+[[./screenshots/dashboard.png]]
+
 [[./screenshots/screen-1.png]]
 
 

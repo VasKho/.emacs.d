@@ -13,6 +13,7 @@
 (setq custom-file "~/.emacs.d/custom.el")
 
 ;; Load plugins
+(load-file "~/.emacs.d/lisp/config/dashboard.el")
 (load-file "~/.emacs.d/lisp/config/smex.el")
 (load-file "~/.emacs.d/lisp/config/doom-theme.el")
 (load-file "~/.emacs.d/lisp/config/magit.el")

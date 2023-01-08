@@ -18,6 +18,8 @@
 ;; Disable auto save
 (setq auto-save-default nil)
 
+;; Tab width
+(setq tab-width 2)
 
 ;; Font setup
 (defvar hack-font "Hack Nerd Font:pixelsize=15:foundry=SRC:weight=normal:slant=normal:width=normal:spacing=100:scalable=true")
