@@ -41,7 +41,10 @@ All the plugins aren't connected with each other, so +I hope+ it won't break any
 *** Modeline configuration
 To customize modeline you can use functions described in [[./lisp/config/modeline.el]] file.
 
-- ~modeline--render~ takes two lists as arguments. The first is the left part, the second is the right part of the modeline.
+- ~modeline--render~ takes two lists as arguments.
+
+  The first is the left part, the second is the right part of the modeline.
+  
   *!Note:* SIMPLE STRINGS DON'T WORK, LISTS ONLY
   #+BEGIN_SRC emacs-lisp
     (setq-default mode-line-format
@@ -49,8 +52,11 @@ To customize modeline you can use functions described in [[./lisp/config/modelin
   #+END_SRC
 
 - ~modeline--create-segment~ is a convenient way to create segments with separators.
+  
   The first argument is a content of segment, the second is a separator.
+  
   The third argument is a list of colors with 3 elements. (<segment-foreground> <segment-background> <separator-background>)
+  
   Return value is a list of propertized strings.
   #+BEGIN_SRC emacs-lisp
     (modeline--create-segment " %b " "/" '("#fabd2f" "#3c3836" "#504945"))
@@ -59,10 +65,13 @@ To customize modeline you can use functions described in [[./lisp/config/modelin
   #+END_SRC
 
 - ~modeline--get-icon~ is a function to get file name and extension and to return icon for the current file.
+  
   To get more info about creating more entries you can simply read the [[file:./lisp/config/modeline.el::24][source]].
 
 ** Keybindings
 
+|-------+-----------------------|
+| Bind  | Action                |
 |-------+-----------------------|
 | ~M-x~   | Comment toggle        |
 |-------+-----------------------|
