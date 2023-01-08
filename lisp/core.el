@@ -13,9 +13,6 @@
 (global-display-line-numbers-mode t)
 (setq display-line-numbers-type 'relative)
 
-;; Set default folder
-;; (setq default-directory (getenv "PWD"))
-
 ;; Disable backup
 (setq backup-inhibited t)
 ;; Disable auto save

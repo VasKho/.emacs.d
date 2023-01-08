@@ -1,8 +1,6 @@
 #+OPTIONS: toc:nil
 * Emacs Configuration
 
-#+TOC: headlines 2
-
 ** Features
 This config provides:
 - Easy filesystem naviagation via [[https://github.com/Alexander-Miller/treemacs][treemacs]]
@@ -12,6 +10,7 @@ This config provides:
 - Git interaction via [[https://github.com/magit/magit][magit]]
 - M-x enhancement with [[https://github.com/nonsequitur/smex][smex]]
 - Paired symbols interaction via [[https://github.com/snosov1/dummyparens][dummyparens]]
+- Easy windows navigation via [[https://github.com/abo-abo/ace-window][ace-window]]
 - Custom comment toggle function based on ~comment-dwim~
 - Slightly configured org-mode preview
 - Custom customizable modeline
@@ -79,5 +78,7 @@ To customize modeline you can use functions described in [[./lisp/config/modelin
 |-------+-----------------------|
 | ~M-0~   | Toggle treemacs focus |
 |-------+-----------------------|
+| M-o   | Enable ace-window     |
+|-------+-----------------------|
 
-+ All default emacs and plugins keybindings. To get more info please refer to thr corresponding docs.
++ All default emacs and plugins keybindings. To get more info please refer to the corresponding docs.

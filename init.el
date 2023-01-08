@@ -24,6 +24,7 @@
 (load-file "~/.emacs.d/lisp/config/dummyparens.el")
 (load-file "~/.emacs.d/lisp/config/comment-toggle.el")
 (load-file "~/.emacs.d/lisp/config/modeline.el")
+(load-file "~/.emacs.d/lisp/config/ace-window.el")
 (load-file "~/.emacs.d/lisp/config/other.el")
 
 (load-file custom-file)
