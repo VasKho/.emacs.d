@@ -9,3 +9,7 @@
 (use-package lsp-latex
   :ensure t
   :defer 1)
+
+(use-package yuck-mode
+  :ensure t
+  :defer 1)

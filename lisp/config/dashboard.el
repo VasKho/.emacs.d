@@ -24,16 +24,19 @@
 	    (lambda (&rest _) (browse-url "https://github.com/VasKho/.emacs.d"))
 	    nil "" ""))
 	  ;; Empty line
-	  (("" "\n" "" nil nil "" ""))
+	  (("" "" "" nil nil "" ""))
 	  (("" " Open file" "Find file with GUI interface"
 	    (lambda (&rest _) (call-interactively 'find-file))
-	    nil "" "             C-x C-f"))
+	    nil "" "                 C-x C-f"))
 	  (("" " File explorer" "Open file explorer"
 	    (lambda (&rest _) (treemacs))
-	    nil "" "             M-0"))
+	    nil "" "                 M-0"))
 	  (("" " Command" "Execute command"
 	    (lambda (&rest _) (call-interactively 'execute-extended-command))
-	    nil "" "                   M-x"))))
+	    nil "" "                       M-x"))
+	  (("" " Open workspace" "Select workspace in file explorer"
+	    (lambda (&rest _) (switch-ws))
+	    nil "" "          C-c C-w s"))))
 
   (defun dashboard-insert-custom ()
     (dashboard-insert-center

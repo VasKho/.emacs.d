@@ -3,6 +3,10 @@
   :init
   (with-eval-after-load 'winum
     (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+  (defun switch-ws ()
+    (interactive)
+    (treemacs)
+    (call-interactively 'treemacs-switch-workspace))
   :config
   (progn
     (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
@@ -100,12 +104,12 @@
 	(treemacs-create-icon :icon ""   :fallback " "   :extensions (fallback))))
 	
     (treemacs-load-theme "treemacs-icons-theme"))
-      
+  
   :bind
   (:map global-map
-        ("M-0"       . treemacs-select-window)))
+        ("M-0"       . treemacs-select-window)
+	("C-c C-w s"       . switch-ws)))
 
 (use-package treemacs-magit
   :after (treemacs magit)
   :ensure t)
-    
