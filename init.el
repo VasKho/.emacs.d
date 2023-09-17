@@ -15,6 +15,7 @@
 ;; Load plugins
 (load-file "~/.emacs.d/lisp/config/dashboard.el")
 (load-file "~/.emacs.d/lisp/config/smex.el")
+(load-file "~/.emacs.d/lisp/config/lsp.el")
 (load-file "~/.emacs.d/lisp/config/doom-theme.el")
 (load-file "~/.emacs.d/lisp/config/magit.el")
 (load-file "~/.emacs.d/lisp/config/treemacs.el")
@@ -26,10 +27,11 @@
 (load-file "~/.emacs.d/lisp/config/comment-toggle.el")
 (load-file "~/.emacs.d/lisp/config/modeline.el")
 (load-file "~/.emacs.d/lisp/config/ace-window.el")
+(load-file "~/.emacs.d/lisp/config/rust.el")
+(load-file "~/.emacs.d/lisp/config/slime.el")
 (load-file "~/.emacs.d/lisp/config/type-script.el")
 (load-file "~/.emacs.d/lisp/config/other.el")
 
 (load-file custom-file)
 (put 'upcase-region 'disabled nil)
-(put 'erase-buffer 'disabled nil)
 (put 'downcase-region 'disabled nil)
