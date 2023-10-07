@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package typescript-mode
-  :ensure t
   :defer 1
   :init
   (defun setup-tide-mode ()
@@ -17,7 +16,6 @@
   (setq typescript-indent-level 2))
 
 (use-package tide
-  :ensure t
   :defer 1
   :config
   (setq tide-format-options

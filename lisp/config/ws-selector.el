@@ -9,7 +9,6 @@
 ;;; Code:
 
 (require 'cl-lib)
-(require 'dired-sidebar)
 
 (defgroup ws-selector nil
   "Manage workspaces config."
@@ -40,7 +39,8 @@ initializing."
 	   (setq ws-selector-workspace-list (remove cons ws-selector-workspace-list))
 	   return nil)
   (push (cons frame path) ws-selector-workspace-list)
-  (when (dired-sidebar-showing-sidebar-p)
+  (when (and (require 'dired-sidebar nil 'noerror)
+	     (dired-sidebar-showing-sidebar-p))
     (pop-to-buffer (dired-sidebar-buffer))
     (dired-sidebar-with-no-dedication
      (find-alternate-file (string-trim-left path))

@@ -3,11 +3,9 @@
 ;;; Code:
 
 (use-package markdown-mode
-  :ensure t
   :defer 1)
 
 (use-package rainbow-mode
-  :ensure t
   :defer 1
   :config
   (define-globalized-minor-mode global-rainbow-mode

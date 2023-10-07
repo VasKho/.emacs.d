@@ -3,7 +3,6 @@
 ;;; Code;
 
 (use-package lsp-mode
-  :ensure t
   :commands lsp
   :defer 1
   :custom
@@ -17,7 +16,6 @@
   )
 
 (use-package lsp-latex
-  :ensure t
   :defer 1)
 
 ;;; lsp.el ends here

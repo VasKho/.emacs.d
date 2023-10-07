@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package slime-company
-  :ensure t
   :after (slime company)
   :config
   (setq slime-company-completion 'simple)
@@ -12,8 +11,6 @@
   (setq slime-company-complete-in-comments-and-strings t))
 
 (use-package slime
-  :ensure t
-  :pin melpa
   :defer 1
   :config
   (setq inferior-lisp-program "ros -Q run")

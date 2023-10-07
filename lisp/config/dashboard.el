@@ -35,7 +35,6 @@
   (propertize (nerd-icons-octicon "nf-oct-terminal") 'face '(:height 1.1)))
 
 (use-package dashboard
-  :ensure t
   :config
   (setq
    dashboard-set-navigator            t

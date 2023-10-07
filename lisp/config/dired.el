@@ -2,15 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(require 'cl-lib)
-(require 'nerd-icons-dired)
-
 (use-package dired
+  :straight (:type built-in)
   :hook (dired-mode . dired-omit-mode))
 
 (use-package dired-sidebar
-  :ensure t
-  :bind (("M-0" . dired-sidebar-toggle))
+  ;; :requires (cl-lib nerd-icons-dired)
   :config
   (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
   (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
@@ -63,6 +60,7 @@
       (dired--set-root-directory (ws-selector-get-working-directory))))
   
   :bind
+  (("M-0" . dired-sidebar-toggle))
   (:map dired-sidebar-mode-map
 	("<return>" . nil)
 	("-" . nil)

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package rustic
-  :ensure t
   :defer 1
   :after (lsp-mode)
   :bind (:map rustic-mode-map

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package flycheck
-  :ensure t
   :defer 1
   :config
   (progn

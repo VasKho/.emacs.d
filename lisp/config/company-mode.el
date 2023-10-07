@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package company
-  :ensure t
   :defer 1
   :config
   (setq company-idle-delay 0.0)
@@ -14,12 +13,10 @@
   (global-company-mode t))
 
 (use-package company-c-headers
-  :ensure t
   :defer 1
   :config (add-to-list 'company-backends 'company-c-headers))
 
 (use-package company-shell
-  :ensure t
   :defer 1
   :config (add-to-list 'company-backends '(company-shell company-shell-env company-fish-shell)))
 

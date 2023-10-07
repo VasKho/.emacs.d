@@ -3,16 +3,13 @@
 ;;; Code:
 
 (use-package dockerfile-mode
-  :ensure t
   :defer 1
   :config (setq dockerfile-mode-command "docker"))
 
 (use-package docker-compose-mode
-  :ensure t
   :defer 1)
 
 (use-package docker
-  :ensure t
   :defer 1
   :bind ("C-x d" . docker)
   :config

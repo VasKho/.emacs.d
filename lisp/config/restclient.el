@@ -3,11 +3,9 @@
 ;;; Code:
 
 (use-package restclient
-  :ensure t
   :defer 1)
 
 (use-package company-restclient
-  :ensure t
   :defer 1
   :custom (restclient-log-request nil)
   :config

@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package dummyparens
-  :ensure t
   :defer 1
   :init
   :config

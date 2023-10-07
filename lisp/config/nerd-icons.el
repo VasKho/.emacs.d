@@ -58,7 +58,6 @@
 	(".*\\.desktop" nerd-icons-octicon "nf-oct-device_desktop" :face nerd-icons-lsilver)))
 
 (use-package nerd-icons
-  :ensure t
   :custom (nerd-icons-font-family "Hack Nerd Font")
   :config
   (defun nerd-icons-icon-for-dir (dir &rest arg-overrides)
@@ -79,7 +78,6 @@
   (setq nerd-icons-dir-icon-alist '(("\\.?.*" nerd-icons-sucicon "nf-custom-folder_oct"))))
 
 (use-package nerd-icons-dired
-  :ensure t
   :after (nerd-icons)
   :hook
   (dired-mode . nerd-icons-dired-mode))

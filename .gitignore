@@ -57,3 +57,6 @@ flycheck_*.el
 
 # databases
 *.db
+
+# packages
+straight

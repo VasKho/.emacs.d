@@ -3,7 +3,6 @@
 ;;; Code:
 
 (use-package vertico
-  :ensure t
   :defer 1
   :custom
   (vertico-cycle t)
@@ -21,7 +20,6 @@
 	("C-SPC" . vertico-insert)))
 
 (use-package vertico-posframe
-  :ensure t
   :defer 1
   :config
   (vertico-posframe-mode 1)
