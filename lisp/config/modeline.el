@@ -104,7 +104,7 @@ RIGHT is a list of right segments.  THEME-BG is a separator color."
     (append
      `(,(propertize
 	 " "
-	 'face '(:background ,theme-bg)
+	 'face `(:background ,theme-bg)
 	 'display `(space :align-to (- right ,right-length))))
      right)))
 
