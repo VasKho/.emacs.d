@@ -12,5 +12,8 @@
     rainbow-mode (lambda () (rainbow-mode 1)))
   (global-rainbow-mode 1))
 
+(use-package glsl-mode
+  :defer 1)
+
 (provide 'other-config)
 ;;; other.el ends here

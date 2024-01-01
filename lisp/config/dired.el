@@ -7,13 +7,20 @@
   :hook (dired-mode . dired-omit-mode))
 
 (use-package dired-sidebar
-  ;; :requires (cl-lib nerd-icons-dired)
   :config
   (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
   (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
   (setq dired-sidebar-use-term-integration t)
   (setq dired-sidebar-close-sidebar-on-file-open t)
 
+  (defun dired-change-workdir-hook (path)
+    (when (dired-sidebar-showing-sidebar-p)
+      (pop-to-buffer (dired-sidebar-buffer))
+      (dired-sidebar-with-no-dedication
+       (find-alternate-file (string-trim-left path))
+       (dired-sidebar-mode)
+       (dired-sidebar-update-state (current-buffer)))))
+  
   (defun dired--set-root-directory (path)
     "Set Dired root directory to PATH."
     (dired-sidebar-with-no-dedication
@@ -22,8 +29,8 @@
            (switch-to-buffer name)
 	 (progn
 	   (find-alternate-file path)
-	   (dired-sidebar-mode)))
-       (dired-sidebar-update-state (current-buffer)))))
+	   (dired-sidebar-mode))))
+     (dired-sidebar-update-state (current-buffer))))
 
   (defun dired-sidebar-toggle ()
     "Toggle dired-sidebar."
@@ -45,7 +52,7 @@
   (defun dired-up-dir ()
     "Set root directory of Dired sidebar to parent directory."
     (interactive)
-    (ws-selector--set-frame-working-directory
+    (ws-selector-set-frame-working-directory
      (selected-frame)
      (file-name-directory (directory-file-name (dired-current-directory))))
     (dired--set-root-directory (ws-selector-get-working-directory)))
@@ -54,7 +61,7 @@
     "Set root directory of Dired sidebar to directory at point."
     (interactive)
     (when (directory-name-p (dired-file-name-at-point))
-      (ws-selector--set-frame-working-directory
+      (ws-selector-set-frame-working-directory
        (selected-frame)
        (dired-get-filename))
       (dired--set-root-directory (ws-selector-get-working-directory))))

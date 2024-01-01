@@ -55,7 +55,9 @@
 	("\\.git.*" nerd-icons-mdicon "nf-md-git" :face nerd-icons-cyan-alt)
 	(".*\\.tar$" nerd-icons-faicon "nf-fa-file_zip_o" :face nerd-icons-lmaroon)
 	(".*\\.tar\\..*" nerd-icons-faicon "nf-fa-file_zip_o" :face nerd-icons-lmaroon)
-	(".*\\.desktop" nerd-icons-octicon "nf-oct-device_desktop" :face nerd-icons-lsilver)))
+	(".*\\.desktop" nerd-icons-octicon "nf-oct-device_desktop" :face nerd-icons-lsilver)
+	(".*\\.lisp" nerd-icons-mdicon "nf-md-code_parentheses" :face nerd-icons-lgreen)
+	(".*\\.cl" nerd-icons-mdicon "nf-md-code_parentheses" :face nerd-icons-lgreen)))
 
 (use-package nerd-icons
   :custom (nerd-icons-font-family "Hack Nerd Font")
@@ -75,7 +77,12 @@
 		  ("torrent" nerd-icons-faicon "nf-fa-magnet" :face all-the-icons-lgreen)
 		  ("iso" nerd-icons-faicon "nf-fae-disco" :face all-the-icons-blue))))
   (setq nerd-icons-regexp-icon-alist regex-alist)
-  (setq nerd-icons-dir-icon-alist '(("\\.?.*" nerd-icons-sucicon "nf-custom-folder_oct"))))
+  (setq nerd-icons-dir-icon-alist '(("\\.?.*" nerd-icons-sucicon "nf-custom-folder_oct")))
+  (setq nerd-icons-mode-icon-alist
+	(append nerd-icons-mode-icon-alist
+		'((common-lisp-mode nerd-icons-mdicon "nf-md-code_parentheses" :face nerd-icons-lgreen)
+		  (lisp-mode nerd-icons-mdicon "nf-md-code_parentheses" :face nerd-icons-lgreen)
+		  (slime-repl-mode nerd-icons-mdicon "nf-md-code_parentheses" :face nerd-icons-lgreen)))))
 
 (use-package nerd-icons-dired
   :after (nerd-icons)
