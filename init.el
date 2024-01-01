@@ -25,6 +25,8 @@
   :custom
   (straight-use-package-by-default t))
 
+(setq custom-file "~/.emacs.d/custom.el")
+
 (load-file "~/.emacs.d/lisp/core.el")
 
 ;; Load plugins
@@ -47,12 +49,18 @@
 (load-file "~/.emacs.d/lisp/config/other.el")
 (load-file "~/.emacs.d/lisp/config/treesitter.el")
 (load-file "~/.emacs.d/lisp/config/rust.el")
+(load-file "~/.emacs.d/lisp/config/js.el")
 (load-file "~/.emacs.d/lisp/config/slime.el")
 (load-file "~/.emacs.d/lisp/config/type-script.el")
 (load-file "~/.emacs.d/lisp/config/docker.el")
 (load-file "~/.emacs.d/lisp/config/restclient.el")
+(load-file "~/.emacs.d/lisp/config/tex.el")
+(load-file "~/.emacs.d/lisp/config/cc.el")
+(load-file "~/.emacs.d/lisp/config/scheme.el")
+(load-file "~/.emacs.d/lisp/config/igrep.el")
 
-;; (load-file custom-file)
+
+(load-file custom-file)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
