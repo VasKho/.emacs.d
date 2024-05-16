@@ -4,7 +4,9 @@
 
 (use-package dockerfile-mode
   :defer 1
-  :config (setq dockerfile-mode-command "docker"))
+  :config
+  (setq dockerfile-mode-command "docker")
+  (setq dockerfile-enable-auto-indent nil))
 
 (use-package docker-compose-mode
   :defer 1)
