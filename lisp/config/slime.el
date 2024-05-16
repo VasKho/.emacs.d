@@ -13,7 +13,7 @@
 (use-package slime
   :defer 1
   :config
-  (setq inferior-lisp-program "ros -Q run")
+  (setq inferior-lisp-program "qlot exec ros -Q run")
   (slime-setup '(slime-fancy slime-company))
   (add-hook
    'slime-mode-hook
