@@ -15,5 +15,9 @@
 (use-package glsl-mode
   :defer 1)
 
+(use-package xclip
+  :defer 1
+  :config (xclip-mode 1))
+
 (provide 'other-config)
 ;;; other.el ends here
