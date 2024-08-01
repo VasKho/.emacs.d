@@ -120,10 +120,10 @@ RIGHT is a list of right segments.  THEME-BG is a separator color."
        (modeline--custom-buffer-name "#427b58" "#ebcdc5")
        (modeline--custom-buffer-modified "#fe8019" "#ebcdc5")
        (modeline--custom-buffer-ro "#9d0006" "#ebcdc5")
-       (modeline--custom-git "#ebcdc5" "#ff3ea5" "#ebcdc5")))
+       (modeline--custom-git "#ebcdc5" "#a6286b" "#ebcdc5")))
     (modeline--make-separator
      (list
-      (modeline--custom-mode "#ebcdc5" "#d3869b" "#ebcdc5")
+      (modeline--custom-mode "#282828" "#d3869b" "#ebcdc5")
       (modeline--custom-icon-for-mode "#ebcdc5" "#bdae93")
       (modeline--custom-progress "#282828" "#bdae93"))
      "#ebcdc5"))))
