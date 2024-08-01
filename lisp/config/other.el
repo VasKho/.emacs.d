@@ -12,7 +12,7 @@
     rainbow-mode (lambda () (rainbow-mode 1)))
   (global-rainbow-mode 1))
 
-(use-package glsl-mode
+(use-package yuck-mode
   :defer 1)
 
 (use-package xclip

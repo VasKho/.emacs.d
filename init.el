@@ -31,7 +31,7 @@
 
 ;; Load plugins
 (load-file "~/.emacs.d/lisp/config/nerd-icons.el")
-(load-file "~/.emacs.d/lisp/config/doom-theme.el")
+;; (load-file "~/.emacs.d/lisp/config/doom-theme.el")
 (load-file "~/.emacs.d/lisp/config/dashboard.el")
 (load-file "~/.emacs.d/lisp/config/modeline.el")
 (load-file "~/.emacs.d/lisp/config/vertico.el")
