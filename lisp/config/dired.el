@@ -2,84 +2,69 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package dired-subtree
+  :custom
+  (dired-subtree-use-backgrounds nil))
+
 (use-package dired
   :straight (:type built-in)
-  :hook (dired-mode . dired-omit-mode))
+  :after (dired-subtree)
 
-(use-package dired-sidebar
+  :hook ((dired-mode . dired-omit-mode)
+	 (dired-mode . dired-hide-details-mode))
+  :custom (dired-listing-switches "-lah")
+
   :config
-  (push 'toggle-window-split dired-sidebar-toggle-hidden-commands)
-  (push 'rotate-windows dired-sidebar-toggle-hidden-commands)
-  (setq dired-sidebar-use-term-integration t)
-  (setq dired-sidebar-close-sidebar-on-file-open t)
-
-  (defun dired-change-workdir-hook (path)
-    (when (dired-sidebar-showing-sidebar-p)
-      (pop-to-buffer (dired-sidebar-buffer))
-      (dired-sidebar-with-no-dedication
-       (find-alternate-file (string-trim-left path))
-       (dired-sidebar-mode)
-       (dired-sidebar-update-state (current-buffer)))))
-  
-  (defun dired--set-root-directory (path)
-    "Set Dired root directory to PATH."
-    (dired-sidebar-with-no-dedication
-     (let ((name (dired-sidebar-buffer-name path)))
-       (if (dired-sidebar-buffer-exists-p name)
-           (switch-to-buffer name)
-	 (progn
-	   (find-alternate-file path)
-	   (dired-sidebar-mode))))
-     (dired-sidebar-update-state (current-buffer))))
-
-  (defun dired-sidebar-toggle ()
-    "Toggle dired-sidebar."
+  (defun dired-toggle ()
+    "Toggle dired buffer."
     (interactive)
-    (if (dired-sidebar-showing-sidebar-p)
-	(progn
-	  (dired-sidebar-hide-sidebar)
-	  (cl-loop for buff in dired-buffers do (kill-buffer (cdr buff))))
-      (let ((buffer (dired-sidebar-get-or-create-buffer (ws-selector-get-working-directory))))
-	(dired-sidebar-show-sidebar buffer)
-	(pop-to-buffer (dired-sidebar-buffer)))))
-
-  (defun dired-sidebar-subtree-toggle ()
-    "Toggle subtree in dired-sidebar with nerd icons."
-    (interactive)
-    (dired-subtree-toggle)
-    (nerd-icons-dired--refresh))
+    (if (eq major-mode 'dired-mode)
+	(kill-buffer-and-window)
+      (if (fboundp 'ws-selector-get-working-directory)
+	  (if buffer-file-name
+	      (dired-jump-other-window)
+	      (dired-other-window (ws-selector-get-working-directory)))
+	(dired-jump-other-window))))
 
   (defun dired-up-dir ()
-    "Set root directory of Dired sidebar to parent directory."
+    "Set root directory of dired to parent directory."
     (interactive)
-    (ws-selector-set-frame-working-directory
-     (selected-frame)
-     (file-name-directory (directory-file-name (dired-current-directory))))
-    (dired--set-root-directory (ws-selector-get-working-directory)))
+    (let ((prev-buffer (current-buffer))
+	  (new-directory (file-name-directory (directory-file-name (dired-current-directory)))))
+      (dired new-directory)
+      (kill-buffer prev-buffer)))
 
-  (defun dired-enter-dir ()
-    "Set root directory of Dired sidebar to directory at point."
+  (defun dired-open-at-point ()
+    "Open file in other window or enter directory in the current buffer."
     (interactive)
-    (when (directory-name-p (dired-file-name-at-point))
-      (ws-selector-set-frame-working-directory
-       (selected-frame)
-       (dired-get-filename))
-      (dired--set-root-directory (ws-selector-get-working-directory))))
-  
+    (let ((prev-buffer (current-buffer))
+	  (target (dired-file-name-at-point)))
+      (if (directory-name-p target)
+	  (dired-find-alternate-file)
+	(progn
+	  (find-file-other-window target)
+	  (with-current-buffer prev-buffer
+	    (kill-buffer-and-window))))))
+
   :bind
-  (("M-0" . dired-sidebar-toggle))
-  (:map dired-sidebar-mode-map
-	("<return>" . nil)
+  (("M-0" . dired-toggle))
+
+  (:map global-map ("C-x C-j" . nil))
+
+  (:map dired-mode-map
+	("<return>" . dired-open-at-point)
+	("RET" . dired-open-at-point)
 	("-" . nil)
 	("+" . nil)
 	("." . nil)
 	("!" . nil)
 	("^" . nil)
 	("o" . nil)
+	("c" . nil)
+	("TAB" . dired-subtree-toggle)
 	("c d" . dired-create-directory)
 	("c f" . dired-create-empty-file)
-	("M-H" . dired-up-dir)
-	("M-L" . dired-enter-dir)))
+	("C-M-u" . dired-up-dir)))
 
 (provide 'dired-config)
 ;;; dired.el ends here
