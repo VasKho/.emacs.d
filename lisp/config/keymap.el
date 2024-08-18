@@ -1,43 +1,32 @@
-(defun translate-keystrokes-ru->en ()
-  "Make emacs output english characters, regardless whether the OS keyboard is english or russian"
-  (cl-flet ((make-key-stroke (prefix char)
-	      (eval `(kbd ,(if (and (string-match "^C-" prefix)
-				    (string-match "[A-Z]" (string char)))
-			       (concat "S-" prefix (string (downcase char)))
-			     (concat prefix (string char)))))))
-    (let ((case-fold-search nil)
-          (keys-pairs (cl-mapcar 'cons
-				 "йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖ\ЭЯЧСМИТЬБЮ№"
-				 "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>#"))
-          (prefixes '(""    "s-"    "M-"    "M-s-"
-		      "C-"  "C-s-"  "C-M-"  "C-M-s-")))
-      (mapc (lambda (prefix)
-	      (mapc (lambda (pair)
-		      (define-key key-translation-map
-				  (make-key-stroke prefix (car pair))
-				  (make-key-stroke prefix (cdr pair))))
-		    keys-pairs))
-	    prefixes))))
+;;; keymap-config --- Config for keymaps on different layouts
+;;; Commentary:
+;;; Code:
 
-(defun literal-insert ()
-  (interactive)
-  (insert-char last-input-event 1))
+(require 'quail)
 
-(define-minor-mode literal-insert-mode
-  "Make emacs output characters corresponging to the OS keyboard,
- ignoring the key-translation-map"
-  :keymap (let ((new-map (make-sparse-keymap))
-                (english-chars "qwertyuiop[]asdfghjkl;'zxcvbnm,.QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>#"))
-            (mapc (lambda (char)
-                    (define-key new-map (string char)
-				'literal-insert))
-                  english-chars)
-            new-map))
+(defun reverse-input-method (input-method)
+  "Build the reverse mapping of single letters from INPUT-METHOD."
+  (when (and input-method (symbolp input-method))
+    (setq input-method (symbol-name input-method)))
 
-(define-globalized-minor-mode global-literal-mode
-  literal-insert-mode
-  (lambda ()
-    (translate-keystrokes-ru->en)
-    (literal-insert-mode 1)))
+  (let ((current current-input-method)
+        (modifiers '(nil (control) (meta) (control meta))))
+    (when input-method
+      (activate-input-method input-method))
+    (when (and current-input-method quail-keyboard-layout)
+      (dolist (map (cdr (quail-map)))
+        (let* ((to (car map))
+               (from (quail-get-translation
+                      (cadr map) (char-to-string to) 1)))
+          (when (and (characterp from) (characterp to))
+            (dolist (mod modifiers)
+              (define-key function-key-map
+                (vector (append mod (list from)))
+                (vector (append mod (list to)))))))))
+    (when input-method
+      (activate-input-method current))))
 
-(global-literal-mode 1)
+(reverse-input-method 'russian-computer)
+
+(provide 'keymap-config)
+;;; keymap.el ends here
