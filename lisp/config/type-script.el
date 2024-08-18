@@ -4,26 +4,20 @@
 
 (use-package typescript-mode
   :defer 1
-  :init
-  (defun setup-tide-mode ()
-    (interactive)
-    (tide-setup)
-    (tide-hl-identifier-mode +1)
-    (company-mode +1))
-  :hook
-  (typescript-mode . setup-tide-mode)
-  :config
-  (setq typescript-indent-level 2))
+  :after (lsp-mode)
+  :hook (typescript-mode . lsp)
 
-(use-package tide
-  :defer 1
-  :config
-  (setq tide-format-options
-	'(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
-	  :placeOpenBraceOnNewLineForFunctions                  nil
-	  :indentSize                                           2
-          :tabSize                                              2
-	  :convertTabsToSpaces                                  t)))
+  :functions lsp-ensure-server lsp-install-server
+  :init
+  (when (lsp-ensure-server 'ts-ls)
+    (lsp-install-server nil 'ts-ls))
+
+  :custom
+  (typescript-indent-level 2)
+
+  (lsp-clients-typescript-prefer-use-project-ts-server t)
+  (lsp-typescript-format-insert-space-after-comma-delimiter t)
+  (lsp-typescript-format-insert-space-after-function-keyword-for-anonymous-functions t))
 
 (provide 'typescript-config)
 ;;; type-script.el ends here
