@@ -2,7 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq straight-repository-branch "develop")
+(when (boundp 'straight-repository-branch)
+  (setq straight-repository-branch "develop"))
 
 ;; Install straight.el
 (defvar bootstrap-version)
@@ -18,20 +19,20 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-(straight-use-package 'use-package)
+(when (fboundp 'straight-use-package)
+  (straight-use-package 'use-package))
 
 ;; Configure use-package to use straight.el by default
 (use-package straight
   :custom
   (straight-use-package-by-default t))
-
+(setq use-package-compute-statistics t)
 (setq custom-file "~/.emacs.d/custom.el")
 
 (load-file "~/.emacs.d/lisp/core.el")
 
 ;; Load plugins
 (load-file "~/.emacs.d/lisp/config/nerd-icons.el")
-;; (load-file "~/.emacs.d/lisp/config/doom-theme.el")
 (load-file "~/.emacs.d/lisp/config/dashboard.el")
 (load-file "~/.emacs.d/lisp/config/modeline.el")
 (load-file "~/.emacs.d/lisp/config/vertico.el")
@@ -41,13 +42,12 @@
 (load-file "~/.emacs.d/lisp/config/dired.el")
 (load-file "~/.emacs.d/lisp/config/ace-window.el")
 (load-file "~/.emacs.d/lisp/config/org.el")
-;; (load-file "~/.emacs.d/lisp/config/keymap.el")
+(load-file "~/.emacs.d/lisp/config/keymap.el")
 (load-file "~/.emacs.d/lisp/config/lsp.el")
 (load-file "~/.emacs.d/lisp/config/magit.el")
 (load-file "~/.emacs.d/lisp/config/company-mode.el")
 (load-file "~/.emacs.d/lisp/config/flycheck.el")
 (load-file "~/.emacs.d/lisp/config/other.el")
-(load-file "~/.emacs.d/lisp/config/treesitter.el")
 (load-file "~/.emacs.d/lisp/config/rust.el")
 (load-file "~/.emacs.d/lisp/config/js.el")
 (load-file "~/.emacs.d/lisp/config/slime.el")
@@ -56,7 +56,6 @@
 (load-file "~/.emacs.d/lisp/config/restclient.el")
 (load-file "~/.emacs.d/lisp/config/tex.el")
 (load-file "~/.emacs.d/lisp/config/cc.el")
-(load-file "~/.emacs.d/lisp/config/scheme.el")
 (load-file "~/.emacs.d/lisp/config/igrep.el")
 
 
