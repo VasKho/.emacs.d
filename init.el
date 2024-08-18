@@ -57,6 +57,7 @@
 (load-file "~/.emacs.d/lisp/config/tex.el")
 (load-file "~/.emacs.d/lisp/config/cc.el")
 (load-file "~/.emacs.d/lisp/config/igrep.el")
+(load-file "~/.emacs.d/lisp/config/ediff.el")
 
 
 (load-file custom-file)
