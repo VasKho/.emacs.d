@@ -5,6 +5,7 @@
 (use-package rustic
   :defer 1
   :after (lsp-mode)
+  :defines rustic-mode-map
   :bind (:map rustic-mode-map
               ("M-?" . lsp-find-references)
               ("C-c C-c l" . flycheck-list-errors)

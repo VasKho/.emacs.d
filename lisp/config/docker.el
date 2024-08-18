@@ -4,9 +4,10 @@
 
 (use-package dockerfile-mode
   :defer 1
-  :config
-  (setq dockerfile-mode-command "docker")
-  (setq dockerfile-enable-auto-indent nil))
+  :custom
+  (dockerfile-use-buildkit t)
+  (dockerfile-mode-command "docker")
+  (dockerfile-enable-auto-indent t))
 
 (use-package docker-compose-mode
   :defer 1)
@@ -14,10 +15,10 @@
 (use-package docker
   :defer 1
   :bind ("C-x d" . docker)
-  :config
-  (setq docker-command          "docker"
-	docker-compose-command  "docker compose"
-	docker-container-shell-file-name "/bin/bash"))
+  :custom
+  (docker-command          "docker")
+  (docker-compose-command  "docker compose")
+  (docker-container-shell-file-name "/bin/bash"))
 
 (provide 'docker-config)
 ;;; docker.el ends here

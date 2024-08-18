@@ -4,14 +4,17 @@
 
 (use-package slime-company
   :after (slime company)
-  :config
-  (setq slime-company-completion 'simple)
-  (setq slime-company-after-completion nil)
-  (setq slime-company-display-flags nil)
-  (setq slime-company-complete-in-comments-and-strings t))
+  :custom
+  (slime-company-completion 'simple)
+  (slime-company-after-completion nil)
+  (slime-company-display-flags nil)
+  (slime-company-complete-in-comments-and-strings t))
 
 (use-package slime
   :defer 1
+  :defines inferior-lisp-program company-backends
+  :functions slime-setup slime-connected-p slime slime-company-disable
+
   :config
   (setq inferior-lisp-program "qlot exec ros -Q run")
   (slime-setup '(slime-fancy slime-company))

@@ -61,6 +61,8 @@
 
 (use-package nerd-icons
   :custom (nerd-icons-font-family "Hack Nerd Font")
+  :defines nerd-icons-dir-icon-alist nerd-icons-extension-icon-alist nerd-icons-regexp-icon-alist nerd-icons-mode-icon-alist
+  :functions nerd-icons-match-to-alist nerd-icons-devicon
   :config
   (defun nerd-icons-icon-for-dir (dir &rest arg-overrides)
     (let* ((dirname (file-name-base (directory-file-name dir)))

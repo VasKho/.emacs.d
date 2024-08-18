@@ -4,11 +4,16 @@
 
 (use-package company
   :defer 1
+  :defines company-backends
+  :functions company-tng-mode global-company-mode
+
+  :custom
+  (company-idle-delay 0.0)
+  (company-tooltip-idle-delay 0.0)
+  (company-tooltip-align-annotations t)
+  (company-selection-wrap-around t)
+
   :config
-  (setq company-idle-delay 0.0)
-  (setq company-tooltip-idle-delay 0.0)
-  (setq company-tooltip-align-annotations t)
-  (setq company-selection-wrap-around t)
   (company-tng-mode)
   (global-company-mode t))
 
@@ -18,7 +23,7 @@
 
 (use-package company-shell
   :defer 1
-  :config (add-to-list 'company-backends '(company-shell company-shell-env company-fish-shell)))
+  :config (add-to-list 'company-backends '(company-shell company-shell-env company-fish-shell company-capf)))
 
 (provide 'company-config)
 ;;; company-mode.el ends here

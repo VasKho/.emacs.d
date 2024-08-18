@@ -4,7 +4,9 @@
 
 (use-package dummyparens
   :defer 1
-  :init
+  :functions global-dummyparens-mode
+  :defines dp-pairs
+
   :config
   (global-dummyparens-mode t)
   (setq dp-pairs

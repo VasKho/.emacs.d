@@ -2,13 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
-(use-package company-auctex
-  :defer 1
-  :config (company-auctex-init))
-
 (use-package auctex-latexmk
   :defer 1
-  :config (setq auctex-latexmk-inherit-TeX-PDF-mode t))
+  :custom (auctex-latexmk-inherit-TeX-PDF-mode t))
 
 (use-package lsp-latex
   :defer 1

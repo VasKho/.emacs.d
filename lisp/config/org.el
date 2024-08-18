@@ -21,8 +21,12 @@
   :after (org))
 
 (use-package org-roam
+  :functions org-roam-db-autosync-mode
+
   :custom
   (org-roam-directory (file-truename "~/Documents/org-roam"))
+  (org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
+
   :bind (("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
@@ -31,18 +35,7 @@
   :config
   (require 'org-roam-export)
   (require 'org-roam-protocol)
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
   (org-roam-db-autosync-mode))
-
-(use-package org-roam-ui
-  :straight
-  (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  :config
-  (setq org-roam-ui-sync-theme t
-        org-roam-ui-follow t
-        org-roam-ui-update-on-save t
-        org-roam-ui-open-on-start nil))
 
 (provide 'org-config)
 ;;; org.el ends here

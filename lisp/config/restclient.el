@@ -7,6 +7,7 @@
 
 (use-package company-restclient
   :defer 1
+  :defines company-backends
   :custom (restclient-log-request nil)
   :config
   (add-to-list 'company-backends 'company-restclient))

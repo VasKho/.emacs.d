@@ -7,6 +7,9 @@
 
 (use-package rainbow-mode
   :defer 1
+  :functions rainbow-mode
+  :defines rainbow-mode
+
   :config
   (define-globalized-minor-mode global-rainbow-mode
     rainbow-mode (lambda () (rainbow-mode 1)))
@@ -17,6 +20,7 @@
 
 (use-package xclip
   :defer 1
+  :functions xclip-mode
   :config (xclip-mode 1))
 
 (provide 'other-config)
