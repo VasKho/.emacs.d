@@ -103,6 +103,9 @@
    `(magit-hash ((,class (:foreground ,fg2))))
    `(magit-diff-file-header ((,class (:foreground ,fg2 :background ,bg3))))
 
+   `(sh-quoted-exec ((t (:inherit font-lock-string-face))))
+   `(sh-heredoc ((t (:inherit font-lock-string-face))))
+
    `(dired-directory ((,class (:foreground ,const))))
    `(vertico-posframe ((,class (:backgrond ,fg6))))
    `(completions-common-part ((,class (:foreground ,const))))
