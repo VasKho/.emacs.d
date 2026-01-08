@@ -1,14 +1,11 @@
-;;; flycheck-config --- Custom config for flycheck
+;;; flycheck-config --- Custom config for flycheck -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package flycheck
-  :defer 1
+  :defer 5
   :functions global-flycheck-mode
-
-  :custom
-  (flycheck-checker-error-threshold 600)
-
+  :custom (flycheck-checker-error-threshold 600)
   :config (global-flycheck-mode))
 
 (provide 'flycheck-config)

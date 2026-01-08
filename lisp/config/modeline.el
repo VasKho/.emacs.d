@@ -1,4 +1,4 @@
-;;; modeline --- Create custom modeline with nerd-icons
+;;; modeline --- Create custom modeline with nerd-icons -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Library for modeline build in powerline style
 ;;; Package-Requires: (nerd-icons)

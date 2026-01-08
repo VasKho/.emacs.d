@@ -1,4 +1,4 @@
-;;; keymap-config --- Config for keymaps on different layouts
+;;; keymap-config --- Config for keymaps on different layouts -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 

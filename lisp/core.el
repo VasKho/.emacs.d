@@ -4,6 +4,8 @@
 
 ;; Don't show startup message
 (setq inhibit-startup-message t)
+(setq initial-scratch-message "")
+(setq initial-major-mode 'text-mode)
 
 ;; Disable toolbar, menubar and scrollbar
 (tool-bar-mode -1)
@@ -25,7 +27,7 @@
 (setq indent-tabs-mode t)
 
 ;; Tab width
-(setq tab-width 2)
+(setq-default tab-width 2)
 
 ;; Setup custom theme
 (setq custom-theme-directory "~/.emacs.d/lisp/config/")
@@ -46,7 +48,7 @@
 (set-frame-font hack-font nil t)
 
 ;; Open links in Firefox
-(setq browse-url-generic-program (executable-find "firefox"))
+(setq browse-url-generic-program (executable-find "librewolf"))
 
 (provide 'core-config)
 ;;; core.el ends here

@@ -1,9 +1,9 @@
-;;; company-config --- Custom config for company-mode
+;;; company-config --- Custom config for company-mode -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package company
-  :defer 1
+  :defer 5
   :defines company-backends
   :functions company-tng-mode global-company-mode
 
@@ -18,11 +18,11 @@
   (global-company-mode t))
 
 (use-package company-c-headers
-  :defer 1
+  :defer 5
   :config (add-to-list 'company-backends 'company-c-headers))
 
 (use-package company-shell
-  :defer 1
+  :defer 5
   :config (add-to-list 'company-backends '(company-shell company-shell-env company-fish-shell company-capf)))
 
 (provide 'company-config)

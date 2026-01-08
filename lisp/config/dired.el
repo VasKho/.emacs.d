@@ -3,15 +3,18 @@
 ;;; Code:
 
 (use-package dired-subtree
-  :custom
-  (dired-subtree-use-backgrounds nil))
+  :after (nerd-icons-dired)
+  :custom (dired-subtree-use-backgrounds nil)
+  :config
+  (advice-add 'dired-subtree-toggle
+							:after (lambda () (nerd-icons-dired-mode 1))))
 
 (use-package dired
+  :defer 1
   :straight (:type built-in)
-  :after (dired-subtree)
 
   :hook ((dired-mode . dired-omit-mode)
-	 (dired-mode . dired-hide-details-mode))
+				 (dired-mode . dired-hide-details-mode))
   :custom (dired-listing-switches "-lah")
 
   :config
@@ -26,6 +29,19 @@
 	      (dired-other-window (ws-selector-get-working-directory)))
 	(dired-jump-other-window))))
 
+  (defun dired-toggle-save-focus ()
+    "Toggle dired buffer saving focus on previous window."
+    (interactive)
+    (if (eq major-mode 'dired-mode)
+	(kill-buffer-and-window)
+      (let ((prev-window (selected-window)))
+	(if (fboundp 'ws-selector-get-working-directory)
+	    (if buffer-file-name
+		(dired-jump-other-window)
+	      (dired-other-window (ws-selector-get-working-directory)))
+	  (dired-jump-other-window))
+	(select-window prev-window))))
+
   (defun dired-up-dir ()
     "Set root directory of dired to parent directory."
     (interactive)
@@ -37,17 +53,18 @@
   (defun dired-open-at-point ()
     "Open file in other window or enter directory in the current buffer."
     (interactive)
-    (let ((prev-buffer (current-buffer))
+    (let ((prev-window (selected-window))
 	  (target (dired-file-name-at-point)))
       (if (directory-name-p target)
 	  (dired-find-alternate-file)
 	(progn
 	  (find-file-other-window target)
-	  (with-current-buffer prev-buffer
-	    (kill-buffer-and-window))))))
+	  (select-window prev-window)
+	  (kill-buffer-and-window)))))
 
   :bind
-  (("M-0" . dired-toggle))
+  (("M-0" . dired-toggle)
+   ("C-M-0" . dired-toggle-save-focus))
 
   (:map global-map ("C-x C-j" . nil))
 

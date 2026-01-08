@@ -1,4 +1,4 @@
-;;; ace-window-config --- Custom config for ace-window
+;;; ace-window-config --- Custom config for ace-window -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
