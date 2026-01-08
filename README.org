@@ -3,9 +3,9 @@
 
 ** Features
 This config provides:
-- Easy filesystem naviagation via [[https://github.com/Alexander-Miller/treemacs][treemacs]]
+- Easy filesystem naviagation via [[https://github.com/Fuco1/dired-hacks/blob/master/dired-subtree.el][dired + dired-subtree]]
 - Completions via [[https://github.com/company-mode/company-mode][company]]
-- Cool-looking interface with [[https://github.com/doomemacs/themes][doom-themes]]
+- Cool-looking interface with custom theme
 - Syntax checks via [[https://github.com/flycheck/flycheck][flycheck]] and [[https://github.com/emacs-tree-sitter/elisp-tree-sitter][tree-sitter]]
 - Git interaction via [[https://github.com/magit/magit][magit]]
 - M-x enhancement with [[https://github.com/nonsequitur/smex][smex]]
@@ -13,11 +13,14 @@ This config provides:
 - Easy windows navigation via [[https://github.com/abo-abo/ace-window][ace-window]]
 - Custom comment toggle function based on ~comment-dwim~
 - Slightly configured org-mode preview
-- Custom customizable modeline
+- Custom configurable modeline
+- LSP for all languages +(that I use at least)+
+- Additional config for terminal usage
+- Compilation script to build the latest emacs version from GNU releases
 
 ** Screenshots
 
-[[./screenshots/dashboard.png]]
+[[./screenshots/terminal.png]]
 
 [[./screenshots/screen-1.png]]
 
@@ -26,7 +29,7 @@ This config provides:
 *** Requirements
 To get things work out of the box you'll need:
 - [[https://www.nerdfonts.com/][Nerd Fonts]] installed (here is used *Hack Nerd Font* as default)
-- Firefox installed (it's used here as links browser)
+- +Firefox+ Librewolf installed (it's used here as links browser)
 - Linux OS (maybe, never tried this on Windows)
 
 To install this config simply clone this repo to your home directory
@@ -71,16 +74,24 @@ To customize modeline you can use functions described in [[./lisp/config/modelin
 
 ** Keybindings
 
-|---------+-----------------------|
-| Bind    | Action                |
-|---------+-----------------------|
-| ~M-x~   | Comment toggle        |
-|---------+-----------------------|
-| ~C-x g~ | Start magit buffer    |
-|---------+-----------------------|
-| ~M-0~   | Toggle treemacs focus |
-|---------+-----------------------|
-| M-o     | Enable ace-window     |
-|---------+-----------------------|
+There are a lot of them and almost all are default.
 
-+ All default emacs and plugins keybindings. To get more info please refer to the corresponding docs.
+|-------------+----------------------------------------------|
+| Bind        | Action                                       |
+|-------------+----------------------------------------------|
+| ~M-;~       | Comment toggle                               |
+|-------------+----------------------------------------------|
+| ~C-x g~     | Start magit buffer                           |
+|-------------+----------------------------------------------|
+| ~M-0~       | Open dired in another window (with focus)    |
+|-------------+----------------------------------------------|
+| ~C-M-0~     | Open dired in another window (without focus) |
+|-------------+----------------------------------------------|
+| ~M-o~       | Enable ace-window                            |
+|-------------+----------------------------------------------|
+| ~M-s M-r~   | Start recursive search                       |
+|-------------+----------------------------------------------|
+| ~C-c C-w s~ | Open workspace selection interface           |
+|-------------+----------------------------------------------|
+
++ + All default emacs and plugins keybindings.
