@@ -1,19 +1,20 @@
-;;; docker-config --- Custom config for docker modes
+;;; docker-config --- Custom config for docker modes -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
-(use-package dockerfile-mode
-  :defer 1
+(use-package dockerfile-ts-mode
+  :defer t
+  :mode "Dockerfile"
   :custom
   (dockerfile-use-buildkit t)
   (dockerfile-mode-command "docker")
   (dockerfile-enable-auto-indent t))
 
 (use-package docker-compose-mode
-  :defer 1)
+  :defer t
+  :mode "docker-compose.ya?ml")
 
 (use-package docker
-  :defer 1
   :bind ("C-x d" . docker)
   :custom
   (docker-command          "docker")

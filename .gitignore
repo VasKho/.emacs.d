@@ -60,3 +60,7 @@ flycheck_*.el
 
 # packages
 straight
+
+.dap-breakpoints
+projects
+tree-sitter

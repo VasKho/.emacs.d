@@ -1,4 +1,4 @@
-;;; vertico-config --- Custom config for vertio
+;;; vertico-config --- Custom config for vertio -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -25,6 +25,7 @@
 
 (use-package vertico-posframe
   :defer 1
+  :after (vertico)
   :functions vertico-posframe-mode
 
   :custom

@@ -1,13 +1,9 @@
-;;; magit-config --- Custom config for magit
+;;; magit-config --- Custom config for magit -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
 (use-package magit
-  :defer 1
-  :functions magit-auto-revert-mode
-
-  :config
-  (magit-auto-revert-mode 0)
+  :custom (magit-auto-revert-mode nil)
   :bind ("C-x g" . magit-status))
 
 ;;; magit.el ends here

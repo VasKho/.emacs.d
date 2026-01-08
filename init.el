@@ -1,4 +1,4 @@
-;;; init-config --- Init file for my emacs config
+;;; init-config --- Init file for my emacs config -*- lexical-binding: t -*-
 ;;; Commentary:
 ;;; Code:
 
@@ -31,34 +31,47 @@
 
 (load-file "~/.emacs.d/lisp/core.el")
 
+(defun efs/display-startup-time ()
+  "Print startup time with GC."
+  (message "Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds"
+                   (float-time
+                   (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(add-hook 'emacs-startup-hook #'efs/display-startup-time)
+
 ;; Load plugins
-(load-file "~/.emacs.d/lisp/config/nerd-icons.el")
-(load-file "~/.emacs.d/lisp/config/dashboard.el")
-(load-file "~/.emacs.d/lisp/config/modeline.el")
-(load-file "~/.emacs.d/lisp/config/vertico.el")
+(load-file "~/.emacs.d/lisp/config/rust.el")
+(load-file "~/.emacs.d/lisp/config/js.el")
 (load-file "~/.emacs.d/lisp/config/comment-toggle.el")
 (load-file "~/.emacs.d/lisp/config/dummyparens.el")
-(load-file "~/.emacs.d/lisp/config/ws-selector.el")
 (load-file "~/.emacs.d/lisp/config/dired.el")
 (load-file "~/.emacs.d/lisp/config/ace-window.el")
 (load-file "~/.emacs.d/lisp/config/org.el")
 (load-file "~/.emacs.d/lisp/config/keymap.el")
-(load-file "~/.emacs.d/lisp/config/lsp.el")
-(load-file "~/.emacs.d/lisp/config/magit.el")
 (load-file "~/.emacs.d/lisp/config/company-mode.el")
 (load-file "~/.emacs.d/lisp/config/flycheck.el")
 (load-file "~/.emacs.d/lisp/config/other.el")
-(load-file "~/.emacs.d/lisp/config/rust.el")
-(load-file "~/.emacs.d/lisp/config/js.el")
-(load-file "~/.emacs.d/lisp/config/slime.el")
-(load-file "~/.emacs.d/lisp/config/type-script.el")
 (load-file "~/.emacs.d/lisp/config/docker.el")
-(load-file "~/.emacs.d/lisp/config/restclient.el")
-(load-file "~/.emacs.d/lisp/config/tex.el")
+(load-file "~/.emacs.d/lisp/config/type-script.el")
 (load-file "~/.emacs.d/lisp/config/cc.el")
+(load-file "~/.emacs.d/lisp/config/python.el")
+(load-file "~/.emacs.d/lisp/config/kotlin.el")
+(load-file "~/.emacs.d/lisp/config/dart.el")
+(load-file "~/.emacs.d/lisp/config/tex.el")
+(load-file "~/.emacs.d/lisp/config/go.el")
+(load-file "~/.emacs.d/lisp/config/nerd-icons.el")
+(load-file "~/.emacs.d/lisp/config/modeline.el")
+(load-file "~/.emacs.d/lisp/config/modeline.el")
+(load-file "~/.emacs.d/lisp/config/vertico.el")
+(load-file "~/.emacs.d/lisp/config/ws-selector.el")
+(load-file "~/.emacs.d/lisp/config/lsp.el")
+(load-file "~/.emacs.d/lisp/config/magit.el")
 (load-file "~/.emacs.d/lisp/config/igrep.el")
 (load-file "~/.emacs.d/lisp/config/ediff.el")
-
+(load-file "~/.emacs.d/lisp/config/dap.el")
+(load-file "~/.emacs.d/lisp/config/gemini-cli.el")
 
 (load-file custom-file)
 (put 'upcase-region 'disabled nil)
